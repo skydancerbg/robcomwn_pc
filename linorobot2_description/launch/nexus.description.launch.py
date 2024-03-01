@@ -21,11 +21,18 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 
+# def generate_launch_description():
+#     robot_base = os.getenv('LINOROBOT2_BASE')
+
+#     urdf_path = PathJoinSubstitution(
+#         [FindPackageShare("linorobot2_description"), "/urdf/nexus_4wd_mecanum_description/urdf", "nexus_4wd_mecanum"]
+#     )
+
 def generate_launch_description():
     robot_base = os.getenv('LINOROBOT2_BASE')
 
     urdf_path = PathJoinSubstitution(
-        [FindPackageShare("linorobot2_description"), "/urdf/nexus_4wd_mecanum_description/urdf", "nexus_4wd_mecanum"]
+        [FindPackageShare("linorobot2_description"), "urdf/robots", "nexusurdf.xacro"]
     )
 
     rviz_config_path = PathJoinSubstitution(
@@ -38,7 +45,7 @@ def generate_launch_description():
             default_value=urdf_path,
             description='URDF path'
         ),
-        
+
         DeclareLaunchArgument(
             name='publish_joints', 
             default_value='true',
