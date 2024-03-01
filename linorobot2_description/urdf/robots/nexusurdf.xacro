@@ -64,22 +64,6 @@
     </inertial>
   </link>
 
-  <gazebo reference="base_link">
-    <material>Gazebo/Yellow</material>
-  </gazebo>
-  
-    <!-- <gazebo reference="base_link">  
-      <visual>  
-        <material>
-          <ambient>0.8392 0.6314 0.0 1.0</ambient>  
-          <diffuse>0.8392 0.6314 0.0 1.0</diffuse>  
-          <specular>0.99 0.99 0.99 1.0</specular>  
-          <emissive>0.0 0.0 0.0 0.0</emissive>  
-        </material>
-      </visual> 
-    </gazebo> -->
-
-
   <joint name="upper_left_wheel_shaft_joint" type="fixed">
     <origin xyz="0.150 0.108 0.0" rpy="0 0 0" />
     <parent link="base_link"/>
@@ -109,10 +93,6 @@
         izz="0.000021370"/>
     </inertial>
   </link>
-
- <gazebo reference="upper_left_wheel_shaft">
-    <material>Gazebo/Black</material>
-  </gazebo>  
 
   <joint name="lower_left_wheel_shaft_joint" type="fixed">
     <origin xyz="-0.150 0.108 0.0" rpy="0 0 0" />
@@ -235,13 +215,6 @@
         izz="0.000324824"/>
     </inertial>
   </link>
-
-  <!-- Wheel friction to zero, as movement is handled by applying forces at the body level. -->
-  <gazebo reference="upper_left_wheel">
-    <material>Gazebo/Grey</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-  </gazebo>
 
   <joint name="lower_left_wheel_joint" type="continuous">
     <origin xyz="0 0.042 0" rpy="0 0 0" />
@@ -402,53 +375,7 @@
       <material name="black" />
     </visual>
   </link>
-  <!-- <xacro:base 
-    length="${base_length}" 
-    width="${base_width}" 
-    height="${base_height}" 
-    mass="${base_mass}"
-    wheel_radius="${wheel_radius}"
-    wheel_pos_z="${wheel_pos_z}"
-/>
 
-  <xacro:mecanum_wheel 
-    side="front_left"
-    radius="${wheel_radius}" 
-    width="${wheel_width}" 
-    pos_x="${wheel_pos_x}" 
-    pos_y="${wheel_pos_y}" 
-    pos_z="${wheel_pos_z}" 
-    mass="${wheel_mass}"
-  />
-
-  <xacro:mecanum_wheel 
-    side="front_right"
-    radius="${wheel_radius}" 
-    width="${wheel_width}" 
-    pos_x="${wheel_pos_x}" 
-    pos_y="${-wheel_pos_y}" 
-    pos_z="${wheel_pos_z}" 
-    mass="${wheel_mass}"
-  />
-  <xacro:mecanum_wheel 
-    side="rear_left"
-    radius="${wheel_radius}" 
-    width="${wheel_width}" 
-    pos_x="${-wheel_pos_x}" 
-    pos_y="${wheel_pos_y}" 
-    pos_z="${wheel_pos_z}" 
-    mass="${wheel_mass}"
-  />
-
-  <xacro:mecanum_wheel 
-    side="rear_right"
-    radius="${wheel_radius}" 
-    width="${wheel_width}" 
-    pos_x="${-wheel_pos_x}" 
-    pos_y="${-wheel_pos_y}" 
-    pos_z="${wheel_pos_z}" 
-    mass="${wheel_mass}"
-  /> -->
 
   <xacro:imu/>
   
@@ -461,4 +388,72 @@
   </xacro:depth_sensor>
 
   <xacro:omni_drive_controller/>
+
+   <gazebo reference="base_footprint">
+    <material>Gazebo/Yellow</material>
+    <gravity>true</gravity>
+  </gazebo>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo reference="left_sensor">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+   <gazebo reference="front_sensor">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+   <gazebo reference="right_sensor">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+   <gazebo reference="rear_sensor">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="upper_left_wheel_shaft">
+    <material>Gazebo/Black</material>
+  </gazebo>  
+
+  <gazebo reference="lower_left_wheel_shaft">
+    <material>Gazebo/Black</material>
+  </gazebo>  
+
+  <gazebo reference="upper_right_wheel_shaft">
+    <material>Gazebo/Black</material>
+  </gazebo>  
+
+  <gazebo reference="lower_right_wheel_shaft">
+    <material>Gazebo/Black</material>
+  </gazebo>  
+
+  <!-- Wheel friction to zero, as movement is handled by applying forces at the body level. -->
+  <gazebo reference="upper_left_wheel">
+    <material>Gazebo/Grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+
+  <gazebo reference="lower_left_wheel">
+    <material>Gazebo/Grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+
+  <gazebo reference="upper_right_wheel">
+    <material>Gazebo/Grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+
+  <gazebo reference="lower_right_wheel">
+    <material>Gazebo/Grey</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+
+
 </robot>
