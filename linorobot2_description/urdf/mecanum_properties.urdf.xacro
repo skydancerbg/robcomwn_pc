@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+
   <xacro:property name="base_length" value="0.412" />
   <xacro:property name="base_width" value="0.217" />
   <xacro:property name="base_height" value="0.050" />
@@ -22,4 +23,8 @@
   <xacro:property name="depth_sensor_pose">
     <origin xyz="0.10 0 0.133" rpy="0 0 0"/>
   </xacro:property>
+
+
+  
+
 </robot>

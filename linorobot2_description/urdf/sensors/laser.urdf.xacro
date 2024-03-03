@@ -1,17 +1,39 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:property name="M_PI" value="3.1415926535897931" />
+  
+  <!-- robcomw: -->
+  <xacro:include filename="$(find linorobot2_description)/urdf/common_constants.xacro" />
+
+  <!-- <material name="yellow"><color rgba="0.8 0.8 0.0 1.0" /></material>
+  <material name="black"><color rgba="0.15 0.15 0.15 1.0" /></material>
+  <material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0" /></material>
+  <material name="light_grey"><color rgba="0.4 0.4 0.4 1.0" /></material> -->
+
   <xacro:macro name="laser" params="*origin update_rate ray_count min_angle max_angle min_range max_range frame_id topic_name">
     <link name="${frame_id}">
       <visual>
         <!-- <origin xyz="0 0 -0.025" rpy="0 0 0"/> -->
-        <origin xyz="0 0 0.016" rpy="0 0 0"/>
+        <!-- <origin xyz="0 0 0.016" rpy="0 0 0"/> -->
+        <!-- <origin xyz="0 0.06067 -0.009" rpy="${ROTATE_90_DEGREES} 0 ${ROTATE_90_DEGREES}"/>  -->
+        <!-- <origin xyz="0 0.0836 -0.09" rpy="${ROTATE_90_DEGREES} 0 ${ROTATE_90_DEGREES}"/> -->
+        <!-- X OK, Y ON THE PLATE -->
+        <!-- <origin xyz="0 0.0836 -0.019" rpy="${ROTATE_90_DEGREES} 0 ${ROTATE_90_DEGREES}"/>  -->
+        <origin xyz="0 0.0836 -0.019" rpy="${ROTATE_90_DEGREES} 0 ${ROTATE_90_DEGREES}"/> 
+
         <geometry>
           <!-- <cylinder radius="0.0375" length="0.05"/> -->
-          <cylinder radius="0.038" length="0.041"/>
+          <!-- <cylinder radius="0.038" length="0.041"/> -->
+          <mesh filename="file://$(find linorobot2_description)/meshes/rp_lidar_a3.STL" scale="0.001 0.001 0.001"/>
+
         </geometry>
-        <material name="green">
+        <!-- <material name="green">
             <color rgba="0.003 0.639 0.223 1.0"/>
+        </material> -->
+        <!-- <material name="black" /> -->
+        <!-- <material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0" /></material>         -->
+        <material name="light_dark_gray">
+            <color rgba="0.3 0.3 0.3 1.0"/> <!-- Adjust the rgba values as needed -->
         </material>
+
       </visual>
       <collision>
         <!-- <origin xyz="0 0 -0.025" rpy="0 0 0"/> -->
@@ -30,7 +52,10 @@
       </inertial>
     </link>
 
-    <gazebo reference="${frame_id}">  
+    <!-- <gazebo reference="c${frame_id}">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo> -->
+    <!-- <gazebo reference="${frame_id}">  
       <visual>  
         <material>
           <ambient>0.003 0.639 0.223 1.0</ambient>  
@@ -39,7 +64,43 @@
           <emissive>0.0 0.0 0.0 0.0</emissive>  
         </material>
       </visual> 
+    </gazebo> -->
+
+    <!-- light dark grey  -->
+    <!-- <gazebo reference="${frame_id}">
+        <visual>
+            <material>
+                <ambient>0.2 0.2 0.2 1.0</ambient>
+                <diffuse>0.4 0.4 0.4 1.0</diffuse>
+                <specular>0.1 0.1 0.1 1.0</specular>
+                <emissive>0.0 0.0 0.0 0.0</emissive>
+            </material>
+        </visual>
+    </gazebo> -->
+      <!-- LIGHTER DARK GREY  -->
+    <!-- <gazebo reference="${frame_id}">
+        <visual>
+            <material>
+                <ambient>0.4 0.4 0.4 1.0</ambient>
+                <diffuse>0.6 0.6 0.6 1.0</diffuse>
+                <specular>0.2 0.2 0.2 1.0</specular>
+                <emissive>0.0 0.0 0.0 0.0</emissive>
+            </material>
+        </visual>
+    </gazebo> -->
+
+      <!-- TOO LIGHT DARK GREY  -->
+    <gazebo reference="${frame_id}">
+        <visual>
+            <material>
+                <ambient>0.6 0.6 0.6 1.0</ambient>
+                <diffuse>0.8 0.8 0.8 1.0</diffuse>
+                <specular>0.4 0.4 0.4 1.0</specular>
+                <emissive>0.0 0.0 0.0 0.0</emissive>
+            </material>
+        </visual>
     </gazebo>
+
 
     <joint name="${frame_id}_to_base_link" type="fixed">
       <parent link="base_link"/>

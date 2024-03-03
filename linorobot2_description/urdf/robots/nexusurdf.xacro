@@ -8,6 +8,9 @@
   <xacro:include filename="$(find linorobot2_description)/urdf/sensors/generic_laser.urdf.xacro" />
   <xacro:include filename="$(find linorobot2_description)/urdf/sensors/depth_sensor.urdf.xacro" />
   <xacro:include filename="$(find linorobot2_description)/urdf/controllers/omni_drive.urdf.xacro" />
+<!-- robcomw: -->
+  <xacro:include filename="$(find linorobot2_description)/urdf/common_constants.xacro" />
+
 
 <!-- Using `package://` in URDF with ROS2 -->
 <!-- https://answers.ros.org/question/370075/using-package-in-urdf-with-ros2/ -->
@@ -16,7 +19,7 @@
 <!-- /ros2_ws/src/linorobot2/linorobot2_description/urdf/robots -->
 
   
-  <xacro:property name="PI" value="3.1415926535897931" />
+  <!-- <xacro:property name="PI" value="3.1415926535897931" /> -->
 
   <xacro:property name="wheel_radius" value="0.050" />
   <xacro:property name="wheel_width" value="0.0505" />

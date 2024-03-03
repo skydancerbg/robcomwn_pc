@@ -1,16 +1,40 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="M_PI" value="3.1415926535897931" />
+  <!-- robcomw: -->
+  <xacro:include filename="$(find linorobot2_description)/urdf/common_constants.xacro" />
+
+  <!-- <material name="yellow"><color rgba="0.8 0.8 0.0 1.0" /></material>
+  <material name="black"><color rgba="0.15 0.15 0.15 1.0" /></material>
+  <material name="dark_grey"><color rgba="0.2 0.2 0.2 1.0" /></material>
+  <material name="light_grey"><color rgba="0.4 0.4 0.4 1.0" /></material> -->
+
   <xacro:macro name="depth_sensor" params="*origin">
     <link name="camera_link">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+        <origin xyz="0 0 -0" rpy="${ROTATE_90_DEGREES} 0 ${ROTATE_90_DEGREES}"/> 
+
         <geometry>
-          <box size="0.030 0.124 0.030"/>
+          <!-- <box size="0.030 0.124 0.030"/> -->
           <!-- <mesh filename="" scale="0.001 0.001 0.001"/> -->
+          <mesh filename="file://$(find linorobot2_description)/meshes/intel_realsense_d435.STL" scale="0.001 0.001 0.001"/>
+
         </geometry>
-        <material name="red">
-          <color rgba="0.416 0.051 0.047 1.0"/>
+        <!-- <material name="light_grey" /> -->
+        <material name="silver">
+          <color rgba="0.75 0.75 0.75 1.0"/> <!-- Adjust the rgba values as needed -->
         </material>
+
+        <!-- <material name="light_grey">
+          <color rgba="0.4 0.4 0.4 1.0" />
+        </material> -->
+        <!-- <material>Gazebo/DarkGrey</material> -->
+        <!-- <material name="red">
+          <color rgba="0.416 0.051 0.047 1.0"/>
+        </material> -->
+        <!-- <material name="green">
+            <color rgba="0.003 0.639 0.223 1.0"/>
+        </material> -->
       </visual>
       
       <collision>
@@ -28,7 +52,7 @@
                  izz="${(1/12) * 0.135 * ((0.030 * 0.030) + (0.124  * 0.124))}"/>
       </inertial>
     </link>
-    
+<!--     
     <gazebo reference="camera_link">  
       <visual>  
         <material>
@@ -38,8 +62,105 @@
           <emissive>0.416 0.051 0.047 1.0</emissive>  
         </material>
       </visual> 
-    </gazebo>rgb(213,28,40)
+    </gazebo>rgb(213,28,40) -->
+    
+    <!--silver color-->
+    <!-- <gazebo reference="camera_link">  
+      <visual>  
+        <material>
+          <ambient>0.192 0.192 0.192 1.0</ambient>  
+          <diffuse>0.507 0.507 0.507 1.0</diffuse>  
+          <specular>0.508 0.508 0.508 1.0</specular>  
+          <emissive>0.0 0.0 0.0 0.0</emissive>  
+        </material>
+      </visual> 
+    </gazebo> -->
 
+            <!-- Adjusted RGBA values for glossy silver -->
+    <!-- <gazebo reference="camera_link">
+        <visual>
+            <material>
+                <ambient>0.6 0.6 0.6 1.0</ambient>
+                <diffuse>0.8 0.8 0.8 1.0</diffuse>
+                <specular>0.9 0.9 0.9 1.0</specular>
+                <emissive>0.0 0.0 0.0 0.0</emissive>
+            </material>
+        </visual>
+    </gazebo> -->
+
+    <!-- <gazebo reference="camera_link">
+        <visual>
+            <material>
+                <ambient>0.8 0.8 0.8 1.0</ambient>
+                <diffuse>0.9 0.9 0.9 1.0</diffuse>
+                <specular>1.0 1.0 1.0 1.0</specular>
+                <emissive>0.0 0.0 0.0 0.0</emissive>
+            </material>
+        </visual>
+    </gazebo> -->
+    <!-- <gazebo reference="camera_link">
+        <visual>
+            <material>
+                <ambient>0.9 0.9 0.9 1.0</ambient>
+                <diffuse>0.95 0.95 0.95 1.0</diffuse>
+                <specular>1.0 1.0 1.0 1.0</specular>
+                <emissive>0.0 0.0 0.0 0.0</emissive>
+            </material>
+        </visual>
+    </gazebo> -->
+
+    <!-- <gazebo reference="camera_link">
+        <visual>
+            <material>
+                <ambient>0.8 0.8 0.8 1.0</ambient>
+                <diffuse>0.9 0.9 0.9 1.0</diffuse>
+                <specular>1.0 1.0 1.0 1.0</specular>
+                <emissive>0.05 0.05 0.05 0.0</emissive>
+            </material>
+        </visual>
+    </gazebo> -->
+
+    <!-- <gazebo reference="camera_link">
+        <visual>
+            <material name="light_grey">
+                <color rgba="0.4 0.4 0.4 1.0"/>
+            </material>
+        </visual>
+    </gazebo> -->
+
+    <!-- <gazebo reference="camera_link">
+        <visual>
+            <material name="dark_grey">
+                <color rgba="0.3 0.3 0.3 1.0"/>
+            </material>
+        </visual>
+    </gazebo> -->
+
+      <!-- LIGHTER DARK GREY  -->
+    <!-- <gazebo reference="camera_link">
+        <visual>
+          <material>
+            <ambient>0.6 0.6 0.6 1.0</ambient>
+            <diffuse>0.8 0.8 0.8 1.0</diffuse>
+            <specular>0.4 0.4 0.4 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive>
+          </material>
+        </visual>
+    </gazebo> -->
+
+    <gazebo reference="camera_link">
+        <visual>
+            <material>
+                <ambient>0.8 0.8 0.8 1.0</ambient>
+                <diffuse>0.9 0.9 0.9 1.0</diffuse>
+                <specular>1.0 1.0 1.0 1.0</specular>
+                <emissive>0.0 0.0 0.0 0.0</emissive>
+            </material>
+        </visual>
+    </gazebo>
+
+
+    
     <joint name="camera_to_base_link" type="fixed">
       <parent link="base_link"/>
       <child link="camera_link"/>
